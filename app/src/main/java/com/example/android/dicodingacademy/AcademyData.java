@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class AcademyData {
     // tempat menyimpan data
+    // susunan pengolahan data: Name, Remaks, Photo, Detail,
     public static String[][] data = new String[][]{
             {"Kotlin Android Developer Expert",
                     "Stay up-to-date dengan menguasai bahasa Kotlin, bahasa pemrograman resmi Google. Di sini Anda akan belajar mengenai Kotlin di Android.",
-                    "https://www.dicoding.com/images/small/academy/kotlin_android_developer_expert_logo_120318174210.png"},
+                    "https://www.dicoding.com/images/small/academy/kotlin_android_developer_expert_logo_120318174210.png"
+            },
             {"Menjadi Android Developer Expert",
                     "Jadilah expert di dunia pemrograman Android. Materi disusun oleh Dicoding sebagai Google Authorized Training Partner.",
                     "https://www.dicoding.com/images/small/academy/menjadi_android_developer_expert_logo_041217105708.png"},

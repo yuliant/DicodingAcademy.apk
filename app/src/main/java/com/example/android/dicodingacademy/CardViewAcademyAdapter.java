@@ -1,6 +1,7 @@
 package com.example.android.dicodingacademy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,13 +54,13 @@ public class CardViewAcademyAdapter extends RecyclerView.Adapter<CardViewAcademy
             @Override
             public void onItemClicked(View view, int position) {
                 // saya rasa bagian ini yang harus di otak atik bila menampilkan details
-                Toast.makeText(context, "Details "+getListAcademy().get(position).getName(), Toast.LENGTH_SHORT).show();
-//                Intent kirimData = new Intent(context, DetailActivity.class);
-//                kirimData.putExtra("Nama", getListAcademy().get(position).getName());
-//                kirimData.putExtra("IMG", gambar [position]);
-//                kirimData.putExtra("DET", detail [position]);
+//                Toast.makeText(context, "Details "+getListAcademy().get(position).getName(), Toast.LENGTH_SHORT).show();
+                Intent kirimData = new Intent(context, Details.class);
+                kirimData.putExtra("Nama", getListAcademy().get(position).getName());
+                kirimData.putExtra("IMG", getListAcademy().get(position).getPhoto());
+                kirimData.putExtra("DET", getListAcademy().get(position).getRemarks());
 
-//                context.startActivity(kirimData);
+                context.startActivity(kirimData);
             }
         }));
 
