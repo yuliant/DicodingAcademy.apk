@@ -1,10 +1,14 @@
 package com.example.android.dicodingacademy;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +18,15 @@ public class Details extends AppCompatActivity {
     ImageView GambarJudul;
     TextView txtdetail;
     TextView remaks;
+
+    TextView des;
+    TextView sis;
+    TextView bon;
+    TextView lev;
+    TextView plat;
+    ImageView imgSusun;
+    TextView susun;
+    Button link;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +53,50 @@ public class Details extends AppCompatActivity {
         String rem = getIntent().getStringExtra("DET");
         remaks.setText(rem);
 
+        des = (TextView) findViewById(R.id.deskripsi);
+        String deskrip = getIntent().getStringExtra("DET2");
+        des.setText(deskrip);
+
+        sis = (TextView) findViewById(R.id.siswa);
+        String siswa = getIntent().getStringExtra("SIS");
+        sis.setText(siswa);
+
+        bon = (TextView) findViewById(R.id.bonus);
+        String bonus = getIntent().getStringExtra("BON");
+        bon.setText(bonus);
+
+        lev = (TextView) findViewById(R.id.level);
+        String level = getIntent().getStringExtra("LVL");
+        lev.setText(level);
+
+        plat = (TextView) findViewById(R.id.platform);
+        String platform = getIntent().getStringExtra("PLAT");
+        plat.setText(platform);
+
+        imgSusun = (ImageView) findViewById(R.id.imgpenyusun);
+        String imgSun = getIntent().getStringExtra("IMG2");
+        Glide.with(Details.this)
+                // LOAD URL DARI INTERNET
+                .load(imgSun)
+                .into(imgSusun);
+
+        susun = (TextView) findViewById(R.id.penyusun);
+        String penyusun = getIntent().getStringExtra("SUSUN");
+        susun.setText(penyusun);
+
+        link = (Button) findViewById(R.id.link);
+        final String inilink = getIntent().getStringExtra("LINK");
+        link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(inilink));
+                startActivity(intent);
+            }
+        });
+
     }
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
@@ -54,21 +111,3 @@ public class Details extends AppCompatActivity {
         return true;
     }
 }
-
-
-
-
-
-
-// intent ini fungsinya adalah untuk menerima data dari RecyclerViewAdapter
-//        Intent terimadata = getIntent();
-//        String nm = terimadata.getStringExtra("Nama");
-//        getSupportActionBar().setTitle(nm);
-//        imggambar.setImageResource(terimadata.getIntExtra("IMG", 1)); //angka satu itu menandakan bahwasannya nilai dari si integer (gak harus angka 1)
-//        txtdetail.setText(terimadata.getStringExtra("DET"));
-//
-//        tvDataReceived = (TextView)findViewById(R.id.tv_data_received);
-//        String name = getIntent().getStringExtra(EXTRA_NAME);
-//        int age = getIntent().getIntExtra(EXTRA_AGE, 0);
-//        String text = "Name : "+name+", Your Age : "+age;
-//        tvDataReceived.setText(text);

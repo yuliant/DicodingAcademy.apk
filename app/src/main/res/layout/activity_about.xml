@@ -22,13 +22,9 @@
         <TextView
             style="@style/TextContent.Black"
             android:textSize="32sp"
-            android:text="@string/_735"
+            android:text="@string/judul"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="8dp"/>
-        <TextView
-            style="@style/TextContent.Subtitle"
-            android:text="@string/stock_hanya_5_buah"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
         <TextView
             style="@style/TextContent"
             android:text="@string/content_text"
@@ -37,7 +33,7 @@
             android:textColor="@android:color/black"/>
         <TextView
             style="@style/TextContent.Subtitle"
-            android:text="@string/spesifikasi"
+            android:text="cara menggunakan"
             android:layout_marginBottom="8dp"/>
         <TableLayout
             android:layout_width="match_parent"
@@ -51,10 +47,10 @@
                 android:layout_marginBottom="8dp">
                 <TextView
                     style="@style/TextSpec.Field"
-                    android:text="@string/display"/>
+                    android:text="1."/>
                 <TextView
                     style="@style/TextSpec.Value"
-                    android:text="@string/content_specs_display"/>
+                    android:text="bla"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -62,10 +58,10 @@
                 android:layout_marginBottom="8dp">
                 <TextView
                     style="@style/TextSpec.Field"
-                    android:text="@string/size"/>
+                    android:text="2."/>
                 <TextView
                     style="@style/TextSpec.Value"
-                    android:text="@string/content_specs_size"/>
+                    android:text="bla"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -73,15 +69,15 @@
                 android:layout_marginBottom="8dp">
                 <TextView
                     style="@style/TextSpec.Field"
-                    android:text="@string/battery"/>
+                    android:text="3."/>
                 <TextView
                     style="@style/TextSpec.Value"
-                    android:text="@string/content_specs_battery"/>
+                    android:text="bla"/>
             </TableRow>
         </TableLayout>
         <TextView
             style="@style/TextContent.Subtitle"
-            android:text="@string/dijual_oleh"
+            android:text="dibuat oleh"
             android:layout_marginBottom="8dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -101,8 +97,5 @@
                 android:text="@string/masrizal_eka_yulianto"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
-        <Button
-            style="@style/ButtonGeneral"
-            android:text="Beli"/>
     </LinearLayout>
 </ScrollView>

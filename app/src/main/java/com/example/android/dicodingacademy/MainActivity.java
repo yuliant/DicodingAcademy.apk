@@ -1,5 +1,6 @@
 package com.example.android.dicodingacademy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvCategory;
     private ArrayList<Academy>list;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSelectedAcademy(Academy academy){
-        Toast.makeText(this, "Kamu memilih "+academy.getName(), Toast.LENGTH_SHORT).show();
+
+        Intent kirimData = new Intent(this, Details.class);
+        kirimData.putExtra("Nama", academy.getName());
+        kirimData.putExtra("IMG", academy.getPhoto());
+        kirimData.putExtra("DET", academy.getRemarks());
+
+        kirimData.putExtra("DET2", academy.getDetail());
+        kirimData.putExtra("SIS", academy.getSiswa());
+        kirimData.putExtra("BON", academy.getBonus());
+        kirimData.putExtra("LVL", academy.getLevel());
+        kirimData.putExtra("PLAT", academy.getPlatform());
+        kirimData.putExtra("IMG2", academy.getImgpenyusun());
+        kirimData.putExtra("SUSUN", academy.getPenyusun());
+        kirimData.putExtra("LINK", academy.getLink());
+
+        this.startActivity(kirimData);
     }
     private void showRecyclerGrid(){
         rvCategory.setLayoutManager(new GridLayoutManager(this, 2));
@@ -58,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+//    public void about(View view) {
+//        Intent intent = new Intent(MainActivity.this, about.class);
+//        startActivity(intent);
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -69,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_grid:
                 showRecyclerGrid();
                 break;
+
+//            case R.id.about:
+//                about();
+//                break;
 
         }
         return super.onOptionsItemSelected(item);

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -47,7 +46,7 @@ public class CardViewAcademyAdapter extends RecyclerView.Adapter<CardViewAcademy
                 .into(holder.imgPhoto);
 
         holder.tvName.setText(p.getName());
-        holder.tvRemarks.setText(p.getRemarks());
+        holder.tvRemarks.setText(p.getPlatform());
 
         holder.btnFavorite.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
 
@@ -60,6 +59,15 @@ public class CardViewAcademyAdapter extends RecyclerView.Adapter<CardViewAcademy
                 kirimData.putExtra("IMG", getListAcademy().get(position).getPhoto());
                 kirimData.putExtra("DET", getListAcademy().get(position).getRemarks());
 
+                kirimData.putExtra("DET2", getListAcademy().get(position).getDetail());
+                kirimData.putExtra("SIS", getListAcademy().get(position).getSiswa());
+                kirimData.putExtra("BON", getListAcademy().get(position).getBonus());
+                kirimData.putExtra("LVL", getListAcademy().get(position).getLevel());
+                kirimData.putExtra("PLAT", getListAcademy().get(position).getPlatform());
+                kirimData.putExtra("IMG2", getListAcademy().get(position).getImgpenyusun());
+                kirimData.putExtra("SUSUN", getListAcademy().get(position).getPenyusun());
+                kirimData.putExtra("LINK", getListAcademy().get(position).getLink());
+
                 context.startActivity(kirimData);
             }
         }));
@@ -69,7 +77,13 @@ public class CardViewAcademyAdapter extends RecyclerView.Adapter<CardViewAcademy
             @Override
             public void onItemClicked(View view, int position) {
                 // saya rasa bagian ini yang harus di otak atik bila menampilkan details
-                Toast.makeText(context, "Share " + getListAcademy().get(position).getName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Share " + getListAcademy().get(position).getName(), Toast.LENGTH_SHORT).show();
+                String shareBody="Ayo teman-teman ikuti "+getListAcademy().get(position).getName()+" di "+getListAcademy().get(position).getLink();
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My App");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                context.startActivity(Intent.createChooser(shareIntent,"Share via"));
             }
         }));
     }
